@@ -40,7 +40,17 @@ linePoint.prototype = {
     }
 }
 
-linePoints = [new linePoint(600, 50), new linePoint(300, 300), new linePoint(10, 10), new linePoint(50, 400)];
+linePoints = [new linePoint(600, 50)];
+
+function initPoints(){
+    for (x=0; x<canvas.width; x=x+20){
+
+        linePoints.push(new linePoint(x, x));
+    }
+}
+
+initPoints();
+
 
 
 function clear() {
@@ -68,10 +78,10 @@ function draw() {
     }
 
     ctx.closePath();
-    ctx.fillStyle = 'red';
+    ctx.fillStyle = `rgba(0,128, 128, 0.5)`;
     ctx.strokeStyle = 'blue';
     ctx.stroke();
-    //ctx.fill();
+    ctx.fill();
 
     raf = window.requestAnimationFrame(draw);
 }
