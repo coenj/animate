@@ -4,9 +4,10 @@ var raf;
 var running = false;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+var ratio= canvas.width/canvas.height;
+var linePoints = [];
 
-
-function linePoint(x, y) {
+function linePoint() {
 
 }
 
@@ -27,8 +28,8 @@ linePoint.prototype = {
         this.x += this.speedX
     },
     moveY: function () { this.y += this.speedY },
-
-    draw: function () {
+ 
+    /*draw: function () {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
         ctx.lineTo(this.x + 10, this.y + 10);
@@ -38,20 +39,15 @@ linePoint.prototype = {
         ctx.stroke();
         ctx.fill();
     }
+    */
 }
-
-linePoints = [new linePoint(600, 50)];
 
 function initPoints(){
-    for (x=0; x<canvas.width; x=x+20){
+    for (x=0; x<canvas.width; x=x+80){
 
-        linePoints.push(new linePoint(x, x));
+        linePoints.push(new linePoint(x, x-x/ratio));
     }
 }
-
-initPoints();
-
-
 
 function clear() {
     ctx.fillStyle = 'white';
@@ -59,7 +55,7 @@ function clear() {
 }
 
 function draw() {
-    clear();
+    //clear();
 
 
     ctx.beginPath();
@@ -68,12 +64,10 @@ function draw() {
     for (i = 0; i < linePoints.length; i++) {
 
         let point = linePoints[i];
-        //point.draw();     
         point.inCanvasY();
         point.inCanvasX()
         point.moveX();
         point.moveY();
-        //drawInPlace(point.x, point.y);
         ctx.lineTo(point.x, point.y);
     }
 
@@ -86,6 +80,10 @@ function draw() {
     raf = window.requestAnimationFrame(draw);
 }
 
+initPoints();
+draw();
+
+/*
 function drawInPlace(x, y) {
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -96,10 +94,6 @@ function drawInPlace(x, y) {
     ctx.stroke();
     ctx.fill();
 }
-
-
-
-/*
 canvas.addEventListener('mousemove', function (e) {
     if (!running) {
         clear();
@@ -123,4 +117,3 @@ canvas.addEventListener('mouseout', function (e) {
 
 */
 
-draw();
