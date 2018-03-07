@@ -4,7 +4,7 @@ var raf;
 var running = false;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
-var ratio= canvas.width/canvas.height;
+var ratio = canvas.width / canvas.height;
 var linePoints = [];
 
 function linePoint() {
@@ -28,7 +28,7 @@ linePoint.prototype = {
         this.x += this.speedX
     },
     moveY: function () { this.y += this.speedY },
- 
+
     /*draw: function () {
         ctx.beginPath();
         ctx.moveTo(this.x, this.y);
@@ -42,10 +42,10 @@ linePoint.prototype = {
     */
 }
 
-function initPoints(){
-    for (x=0; x<canvas.width; x=x+80){
+function initPoints() {
+    for (x = 0; x < canvas.width; x = x + 80) {
 
-        linePoints.push(new linePoint(x, x-x/ratio));
+        linePoints.push(new linePoint(x, x - x / ratio));
     }
 }
 
@@ -57,10 +57,18 @@ function clear() {
 function draw() {
     //clear();
 
-
     ctx.beginPath();
     ctx.moveTo(linePoints[0].x, linePoints[0].y);
 
+    linePoints.forEach(point => {
+        point.inCanvasY();
+        point.inCanvasX()
+        point.moveX();
+        point.moveY();
+        ctx.lineTo(point.x, point.y);
+    })
+
+/*
     for (i = 0; i < linePoints.length; i++) {
 
         let point = linePoints[i];
@@ -70,7 +78,7 @@ function draw() {
         point.moveY();
         ctx.lineTo(point.x, point.y);
     }
-
+*/
     ctx.closePath();
     ctx.fillStyle = `rgba(0,128, 128, 0.5)`;
     ctx.strokeStyle = 'blue';
