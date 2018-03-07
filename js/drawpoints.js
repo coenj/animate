@@ -43,9 +43,11 @@ linePoint.prototype = {
 }
 
 function initPoints() {
-    for (x = 0; x < canvas.width; x = x + 80) {
+    for (x = 0; x < canvas.width; x = x + 30) {
 
-        linePoints.push(new linePoint(x, x - x / ratio));
+        //linePoints.push(new linePoint(x, x - x / ratio));
+        pos=Math.random()*canvas.width;
+        linePoints.push(new linePoint(pos, pos -pos / ratio));
     }
 }
 
@@ -54,32 +56,23 @@ function clear() {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
+function drawLines(point){
+    point.inCanvasY();
+    point.inCanvasX()
+    point.moveX();
+    point.moveY();
+    ctx.lineTo(point.x, point.y);
+}
+
+
 function draw() {
-    //clear();
+   clear();
 
     ctx.beginPath();
     ctx.moveTo(linePoints[0].x, linePoints[0].y);
-
-    linePoints.forEach(point => {
-        point.inCanvasY();
-        point.inCanvasX()
-        point.moveX();
-        point.moveY();
-        ctx.lineTo(point.x, point.y);
-    })
-
-/*
-    for (i = 0; i < linePoints.length; i++) {
-
-        let point = linePoints[i];
-        point.inCanvasY();
-        point.inCanvasX()
-        point.moveX();
-        point.moveY();
-        ctx.lineTo(point.x, point.y);
-    }
-*/
+    linePoints.forEach(drawLines);
     ctx.closePath();
+
     ctx.fillStyle = `rgba(0,128, 128, 0.5)`;
     ctx.strokeStyle = 'blue';
     ctx.stroke();
