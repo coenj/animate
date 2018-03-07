@@ -17,9 +17,9 @@ function linePoint(x, y) {
 }
 
 linePoint.prototype = {
-    x: 10,
-    y: 10,
-    speedX: 4,
+    x: 100,
+    y: 100,
+    speedX: 12,
     speedY: 4,
     inCanvasY: function () { if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0) this.speedY = -this.speedY },
     inCanvasX: function () { if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) this.speedX = -this.speedX },
@@ -47,7 +47,7 @@ function initPoints() {
 
         //linePoints.push(new linePoint(x, x - x / ratio));
         pos=Math.random()*canvas.width;
-        linePoints.push(new linePoint(pos, pos));
+        linePoints.push(new linePoint(pos, pos -pos / ratio));
     }
 }
 
@@ -66,15 +66,15 @@ function drawLines(point){
 
 
 function draw() {
-   clear();
+   //clear();
 
     ctx.beginPath();
     ctx.moveTo(linePoints[0].x, linePoints[0].y);
     linePoints.forEach(drawLines);
     ctx.closePath();
 
-    ctx.fillStyle = 'grey'; //`rgba(0,128, 128, 0.5)`;
-    ctx.strokeStyle = 'black';
+    ctx.fillStyle = `rgba(0,128, 128, 0.5)`;
+    ctx.strokeStyle = 'blue';
     ctx.stroke();
     ctx.fill();
 
