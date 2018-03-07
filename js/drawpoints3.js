@@ -6,11 +6,6 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ratio = canvas.width / canvas.height;
 var linePoints = [];
-var shape = {
-    linePoints: linePoints,
-    fill: 'green',
-    stroke: 'orange'
-}
 
 function linePoint() {
 
@@ -48,7 +43,7 @@ linePoint.prototype = {
 }
 
 function initPoints() {
-    for (x = 0; x < canvas.width; x = x + 30) {
+    for (x = 0; x < canvas.width; x = x + 230) {
 
         //linePoints.push(new linePoint(x, x - x / ratio));
         pos=Math.random()*canvas.width;
@@ -71,15 +66,15 @@ function drawLines(point){
 
 
 function draw() {
-  clear();
+  // clear();
 
     ctx.beginPath();
-    ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
-    shape.linePoints.forEach(drawLines);
+    ctx.moveTo(linePoints[0].x, linePoints[0].y);
+    linePoints.forEach(drawLines);
     ctx.closePath();
 
-    ctx.fillStyle = shape.fill; //`rgba(0,128, 128, 0.5)`;
-    ctx.strokeStyle = shape.stroke;
+    ctx.fillStyle = 'grey'; //`rgba(0,128, 128, 0.5)`;
+    ctx.strokeStyle = 'black';
     ctx.stroke();
     ctx.fill();
 
@@ -87,8 +82,6 @@ function draw() {
 }
 
 initPoints();
-shape.linePoints = linePoints;
-
 draw();
 
 /*
