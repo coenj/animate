@@ -85,8 +85,8 @@ var animation_a = (function () {
         clear();
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
-        o = shape;
-        o.linePoints.forEach(drawLines);
+        
+        shape.linePoints.forEach(drawLines);
         ctx.closePath();
 
         ctx.fillStyle = shape.fill; //`rgba(0,128, 128, 0.5)`;
