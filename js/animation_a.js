@@ -1,16 +1,17 @@
 // author: CoenJanssen.net
 //global namespace
+/*
 var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 var ratio = canvas.width / canvas.height;
-
+*/
 //local namespace
-var animation_a = (function () {
-
+function animation_a() {
+    var name="a";
     //var linePoints = [];
-    var raf;
+    //    var raf;
     var shapes = [];
     var running = false;
 
@@ -51,11 +52,10 @@ var animation_a = (function () {
 
     }
 
-    function Shape(fill, stroke, x, y, //linePoints
+    function Shape(fill, stroke, x, y,
     ) {
         this.fill = fill;
         this.stroke = stroke;
-        // this.linePoints = this.linePoints;
         this.x = x;
         this.y = y;
     }
@@ -85,7 +85,7 @@ var animation_a = (function () {
         clear();
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
-        
+
         shape.linePoints.forEach(drawLines);
         ctx.closePath();
 
@@ -97,7 +97,9 @@ var animation_a = (function () {
 
     function animate() {
         shapes.forEach(draw);
-        raf = window.requestAnimationFrame(animate);
+        
+            raf = window.requestAnimationFrame(animate);
+        
     }
 
 
@@ -134,4 +136,4 @@ var animation_a = (function () {
     });
     
     */
-})();
+};
