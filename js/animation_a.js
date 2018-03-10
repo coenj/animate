@@ -62,8 +62,8 @@ var animation_a = (function () {
 
     Shape.prototype = {
         linePoints: [] = initPoints(),
-        fill: 'green',
-        stroke: 'orange',
+        fill: 'yellow',
+        stroke: 'blue',
         x: 10,
         y: 10,
     }
@@ -82,7 +82,7 @@ var animation_a = (function () {
     }
 
     function draw(shape) {
-        //clear();
+        clear();
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
         o = shape;
@@ -101,11 +101,11 @@ var animation_a = (function () {
     }
 
 
-    shape = new Shape(`rgba(128,0, 0, 0.5)`, 'blue', 0, 20);
+    shape = new Shape(`rgba(0,128, 0, 0.5)`, 'purple', 0, 20);
 
     shapes.push(shape);
 
-    shape = new Shape(`rgba(0,128, 128, 0.5)`, 'green', 600, 400);
+    shape = new Shape(`rgba(0,0, 254, 0.5)`, 'grey', 600, 400);
 
     shapes.push(shape);
 

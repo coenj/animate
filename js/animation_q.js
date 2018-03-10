@@ -7,7 +7,7 @@ canvas.height = window.innerHeight;
 var ratio = canvas.width / canvas.height;
 
 //local namespace
-var animation_a = (function () {
+var animation_q = (function () {
 
     //var linePoints = [];
     var raf;
