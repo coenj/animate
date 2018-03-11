@@ -83,7 +83,7 @@ var figure = {
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
 
-        shape.linePoints.forEach(figure.drawLines);
+        shape.linePoints.forEach(this.drawLines);
         ctx.closePath();
 
         ctx.fillStyle = shape.fill; //`rgba(0,128, 128, 0.5)`;
@@ -91,17 +91,15 @@ var figure = {
         ctx.stroke();
         ctx.fill();
     },
-    drawShapes: function () {
+    drawShapes: function(){
         this.shapes.forEach(this.draw);
     }
-
+    
 }
 
-var animation_a = {
-    animate: function() {
-        figure.drawShapes();
-        raf = window.requestAnimationFrame(animation_a.animate);
-    }
+var animation_a = function () {
+    figure.drawShapes();
+    raf = window.requestAnimationFrame(this.animate);
 }
 
 
@@ -114,7 +112,7 @@ shape = new Shape(`rgba(0,0, 254, 0.5)`, 'grey', 600, 400);
 
 figure.shapes.push(shape);
 
-animation_a.animate();
+animation_a();
 
     /*
     canvas.addEventListener('mousemove', function (e) {

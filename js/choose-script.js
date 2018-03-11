@@ -17,6 +17,8 @@ window.onload = function () {
             var script = document.createElement('script');
             script.src = `js/animation_${keyChar}.js`;
             document.head.appendChild(script); // insert script with the letter keyChar
+        } else {
+            window.cancelAnimationFrame(animation_a.raf);
         }
     }
 
