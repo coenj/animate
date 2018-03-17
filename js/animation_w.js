@@ -1,6 +1,6 @@
 // author: CoenJanssen.net
 
-animation["q"] = function () {
+animation["w"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
@@ -54,8 +54,8 @@ animation["q"] = function () {
 
     Shape.prototype = {
         linePoints: [],
-        fill: 'green',
-        stroke: 'red',
+        fill: 'blue',
+        stroke: 'yellow',
         x: 10,
         y: 10,
     }
@@ -63,11 +63,11 @@ animation["q"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(0,0, 254, 0.5)`, 'blue', 100, 20);
+        shape = new Shape(`rgba(254,0, 128, 0.5)`, 'blue', 0, 120);
 
         shapes.push(shape);
 
-        shape = new Shape(`rgba(128,128, 0, 0.5)`, 'purple', 600, 400);
+        shape = new Shape(`rgba(0,254, 64, 0.5)`, 'green', 300, 200);
 
         shapes.push(shape);
     }

@@ -1,12 +1,20 @@
 console.log("Hello scripts");
+//global namespace
+var canvas = {};
+var ctx = {};
+var ratio = 1;
+var animation = {};
+
 window.onload = function () {
-    //global namespace
-    var canvas = document.getElementById('canvas');
-    var ctx = canvas.getContext('2d');
+
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    var ratio = canvas.width / canvas.height;
-    var keysUsed="";
+    ratio = canvas.width / canvas.height;
+    var keysUsed = "";
+    var raf;
+
     window.onkeydown = function () {
         // insert a keychar to choose the letter of animation
         keyChar = String.fromCharCode(window.event.keyCode).toLowerCase();
@@ -16,11 +24,26 @@ window.onload = function () {
             console.log(keyChar);
             var script = document.createElement('script');
             script.src = `js/animation_${keyChar}.js`;
-            document.head.appendChild(script); // insert script with the letter keyChar
+            document.head.appendChild(script); // insert script with the letter keyChar         
         } else {
-            window.cancelAnimationFrame(animation_a.raf);
+            animation[keyChar].play=!animation[keyChar].play;
         }
+
     }
+
+  
+    function animate() {
+
+        for (key of keysUsed) {
+            if (animation[key] && animation[key].play) { 
+                animation[key](); 
+            }
+        }
+
+        raf = window.requestAnimationFrame(animate);
+    }
+
+    animate();
 
 }
 
