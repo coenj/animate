@@ -112,4 +112,5 @@ animation["w"] = function () {
     }
 }();
 
+animation["w"].play=true;
 

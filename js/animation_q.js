@@ -4,7 +4,8 @@ animation["q"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
-    
+
+
     function linePoint() {
 
     }
@@ -108,8 +109,9 @@ animation["q"] = function () {
     
     // below is the only public part of the function
     return function () {           
+        
         drawAll(shapes);
     }
 }();
 
-
+animation["q"].play=true;

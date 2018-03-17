@@ -24,10 +24,10 @@ window.onload = function () {
             console.log(keyChar);
             var script = document.createElement('script');
             script.src = `js/animation_${keyChar}.js`;
-            document.head.appendChild(script); // insert script with the letter keyChar         
-        } else {
-            animation[keyChar].play=!animation[keyChar].play;
-        }
+            document.head.appendChild(script); // insert script with the letter keyChar
+            } else {            
+                animation[keyChar].play=!animation[keyChar].play;
+            }
 
     }
 
