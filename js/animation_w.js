@@ -31,7 +31,7 @@ animation["w"] = function () {
         var array = [];
 
         for (x = 0; x < canvas.width; x = x + 30) {
-            pos = Math.random() * canvas.width;
+            pos = Math.random() * canvas.width*ratio;
             array.push(new linePoint(pos, pos));
         }
 
@@ -66,10 +66,7 @@ animation["w"] = function () {
         shape = new Shape(`rgba(254,0, 128, 0.5)`, 'blue', 0, 120);
 
         shapes.push(shape);
-
-        shape = new Shape(`rgba(0,254, 64, 0.5)`, 'green', 300, 200);
-
-        shapes.push(shape);
+        
     }
 
     function clear() {
@@ -85,9 +82,9 @@ animation["w"] = function () {
     }
 
     function draw(shape) {
-        //  clear();
+        //clear();
         ctx.beginPath();
-        ctx.moveTo(shape.x, shape.y);
+        ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
         o = shape;
         o.linePoints.forEach(drawLines);
         ctx.closePath();

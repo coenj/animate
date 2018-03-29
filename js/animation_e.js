@@ -1,6 +1,6 @@
 // author: CoenJanssen.net
 
-animation["q"] = function () {
+animation["e"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
@@ -32,8 +32,7 @@ animation["q"] = function () {
         var array = [];
 
         for (x = 0; x < canvas.width; x = x + 30) {
-            pos = Math.random() * canvas.width;
-            array.push(new linePoint(pos, pos));
+            array.push(new linePoint(x, x));
         }
 
         return array;
@@ -109,9 +108,9 @@ animation["q"] = function () {
     
     // below is the only public part of the function
     return function () {           
-        //clear();
+        clear();
         drawAll(shapes);
     }
 }();
 
-animation["q"].play=true;
+animation["e"].play=true;

@@ -1,11 +1,10 @@
 // author: CoenJanssen.net
 
-animation["q"] = function () {
+animation["y"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
-
-
+    
     function linePoint() {
 
     }
@@ -32,7 +31,7 @@ animation["q"] = function () {
         var array = [];
 
         for (x = 0; x < canvas.width; x = x + 30) {
-            pos = Math.random() * canvas.width;
+            pos = Math.random() * canvas.width*ratio;
             array.push(new linePoint(pos, pos));
         }
 
@@ -55,8 +54,8 @@ animation["q"] = function () {
 
     Shape.prototype = {
         linePoints: [],
-        fill: 'green',
-        stroke: 'red',
+        fill: 'blue',
+        stroke: 'yellow',
         x: 10,
         y: 10,
     }
@@ -64,13 +63,10 @@ animation["q"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(0,0, 254, 0.5)`, 'blue', 100, 20);
+        shape = new Shape(`rgba(254,0, 128, 0.5)`, 'blue', 0, 120);
 
         shapes.push(shape);
-
-        shape = new Shape(`rgba(128,128, 0, 0.5)`, 'purple', 600, 400);
-
-        shapes.push(shape);
+        
     }
 
     function clear() {
@@ -85,12 +81,24 @@ animation["q"] = function () {
         ctx.lineTo(point.x, point.y);
     }
 
+    function drawBeziers(cp1, cp2, point) {
+        point.update();
+        point.moveX();
+        point.moveY();
+        ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, point.x, point.y);
+    }
+
     function draw(shape) {
-        //  clear();
+        clear();
         ctx.beginPath();
-        ctx.moveTo(shape.x, shape.y);
+        ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
         o = shape;
-        o.linePoints.forEach(drawLines);
+
+        for(var i=0; i< o.linePoints.length-2; i+=3){
+
+            drawBeziers(o.linePoints[i], o.linePoints[i+1], o.linePoints[i+2]);
+        }
+        
         ctx.closePath();
 
         ctx.fillStyle = shape.fill; //`rgba(0,128, 128, 0.5)`;
@@ -109,9 +117,9 @@ animation["q"] = function () {
     
     // below is the only public part of the function
     return function () {           
-        //clear();
         drawAll(shapes);
     }
 }();
 
-animation["q"].play=true;
+animation["y"].play=true;
+
