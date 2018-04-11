@@ -4,7 +4,7 @@ animation["o"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
-    var head =[
+    var path =[
         408.62109,5.375,
         432,62.800046,
         426.98334,181.18878,
@@ -120,9 +120,9 @@ animation["o"] = function () {
     function initPoints() {
         var array = [];
 
-        for (i=0; i< head.length; i+=2) {
-            posX =head[i];
-            posY =head[i+1]
+        for (i=0; i< path.length; i+=2) {
+            posX =path[i];
+            posY =path[i+1]
             array.push(new linePoint(posX, posY));
         }
 
@@ -155,7 +155,7 @@ animation["o"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(254,0, 128, 0.9)`, 'black',10, 0, 120);
+        shape = new Shape(`rgba(254,0, 128, 0.5)`, 'black',10, 0, 120);
 
         shapes.push(shape);
         
