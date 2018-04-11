@@ -73,10 +73,7 @@ animation["q"] = function () {
         shapes.push(shape);
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    
 
     function drawLines(point) {
         point.update();

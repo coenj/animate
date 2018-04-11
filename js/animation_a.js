@@ -34,10 +34,7 @@ class Point {
     }
 }
 
-function clear() {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+
 
 
 

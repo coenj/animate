@@ -62,10 +62,7 @@ Shape.prototype = {
 }
 
 
-function clear() {
-    ctx.fillStyle = 'white';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
-}
+
 
 
 var figure = {
@@ -79,7 +76,7 @@ var figure = {
         ctx.lineTo(point.x, point.y);
     },
     draw: function (shape) {
-        clear();
+        
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
 

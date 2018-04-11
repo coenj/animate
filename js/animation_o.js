@@ -155,17 +155,13 @@ animation["o"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(254,0, 128, 0.5)`, 'black',10, 0, 120);
+        shape = new Shape(`rgba(254,254, 254, 0.5)`, 'black',10, 0, 120);
 
         shapes.push(shape);
         
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
+    
     function drawLines(point) {
         point.update();
         point.moveX();
@@ -201,7 +197,7 @@ animation["o"] = function () {
 */
 
     function draw(shape) {
-        clear();
+        
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0], shape.linePoints[1]);
         shape.linePoints.forEach(drawLines);

@@ -72,10 +72,7 @@ animation["e"] = function () {
         shapes.push(shape);
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    
 
     function drawLines(point) {
         point.update();
@@ -108,7 +105,7 @@ animation["e"] = function () {
     
     // below is the only public part of the function
     return function () {           
-        clear();
+        
         drawAll(shapes);
     }
 }();

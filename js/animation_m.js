@@ -1,6 +1,6 @@
 // author: CoenJanssen.net
 
-animation["i"] = function () {
+animation["m"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
@@ -122,10 +122,7 @@ animation["i"] = function () {
 
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    
 
     function drawLines(point) {
         point.update();
@@ -142,7 +139,7 @@ animation["i"] = function () {
     }
 
     function draw(shape) {
-        clear();
+        
         document.body.innerHTML = svgTemplate;
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
@@ -175,5 +172,5 @@ animation["i"] = function () {
     }
 }();
 
-animation["i"].play = true;
+animation["m"].play = true;
 

@@ -74,11 +74,7 @@ animation["p"] = function () {
         
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
-
+    
     function drawLines(point) {
         point.update();
         point.moveX();
@@ -114,7 +110,7 @@ animation["p"] = function () {
 */
 
     function draw(shape) {
-        clear();
+        
         ctx.beginPath();
         ctx.moveTo(shape.x, shape.y);
         o = shape;

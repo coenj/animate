@@ -231,10 +231,7 @@ animation["u"] = function () {
         
     }
 
-    function clear() {
-        ctx.fillStyle = 'white';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-    }
+    
 
     function drawLines(point) {
         point.update();
@@ -251,7 +248,7 @@ animation["u"] = function () {
     }
 
     function draw(shape) {
-        clear();
+        
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
         o = shape;

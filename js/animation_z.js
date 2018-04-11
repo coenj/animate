@@ -9,9 +9,9 @@ animation["z"] = function () {
     
     return function(){
     clear();
-    console.log("clear z");
+    
     }
 }();
-
+console.log("clear z");
 animation["z"].play=true;
 
