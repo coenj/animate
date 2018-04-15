@@ -1,6 +1,6 @@
 // author: CoenJanssen.net
 
-animation["d"] = function () {
+animation["j"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
     var shapes = [];
@@ -109,9 +109,13 @@ animation["d"] = function () {
         speedX: 4,
         speedY: 4,
         update: function () {
-            if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) this.speedX = -this.speedX
-            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0) this.speedY = -this.speedY
-        },
+            if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) {
+                this.speedX = -this.speedX;
+                                            }
+            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0){ this.speedY = -this.speedY
+                 
+    }
+},
         moveX: function () { this.x += this.speedX },
         moveY: function () { this.y += this.speedY },
     }
@@ -154,7 +158,7 @@ animation["d"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(254,0, 127, 0.5)`, 'black',5, 0, 120);
+        shape = new Shape(`rgba(254,254, 254, 0.5)`, 'black',5, 0, 120);
 
         shapes.push(shape);
         
@@ -179,11 +183,12 @@ animation["d"] = function () {
         
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
+        
+        
         o = shape;
 
         for(var i=0; i< o.linePoints.length-2; i+=3*dropPoints){
-
-            drawBeziers(o.linePoints[i], o.linePoints[i+1], o.linePoints[i+2]);
+            drawLines(o.linePoints[i]);
         }
         
         ctx.closePath();
@@ -225,5 +230,5 @@ animation["d"] = function () {
     }
 }();
 
-animation["d"].play=true;
+animation["j"].play=true;
 

@@ -14,10 +14,22 @@ window.onload = function () {
     ratio = canvas.width / canvas.height;
     var keysUsed = "";
     var raf;
-
+    dropPoints=1;
     window.onkeydown = function () {
         // insert a keychar to choose the letter of animation
         keyChar = String.fromCharCode(window.event.keyCode).toLowerCase();
+        if (keyChar == "n") {
+            dropPoints += 1;
+            checkPoints();
+            return;
+        }
+        if (keyChar == "m") {
+            dropPoints -= 1;
+            checkPoints();
+            return;
+        }
+       
+
 
         if (!keysUsed.includes(keyChar)) {
             keysUsed += keyChar;
@@ -25,18 +37,18 @@ window.onload = function () {
             var script = document.createElement('script');
             script.src = `js/animation_${keyChar}.js`;
             document.head.appendChild(script); // insert script with the letter keyChar
-            } else {            
-                animation[keyChar].play=!animation[keyChar].play;
-            }
+        } else {
+            animation[keyChar].play = !animation[keyChar].play;
+        }
 
     }
 
-  
+
     function animate() {
 
         for (key of keysUsed) {
-            if (animation[key] && animation[key].play) { 
-                animation[key](); 
+            if (animation[key] && animation[key].play) {
+                animation[key]();
             }
         }
 
@@ -44,6 +56,12 @@ window.onload = function () {
     }
 
     animate();
+
+function checkPoints(){
+   // console.log(dropPoints);
+    if (dropPoints > 18) dropPoints = 18;
+    if (dropPoints < 1) dropPoints = 1;
+    }
 
 }
 

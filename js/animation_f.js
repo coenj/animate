@@ -111,10 +111,13 @@ animation["f"] = function () {
         update: function () {
             if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) {
                 this.speedX = -this.speedX;
-                dropPoints=1+Math.round(Math.random()*15);
-            }
-            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0) this.speedY = -this.speedY
-        },
+                                            }
+            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0){ this.speedY = -this.speedY
+            dropPoints+= Math.round(Math.random()*2);
+                if(dropPoints>24) dropPoints=1;
+      
+    }
+},
         moveX: function () { this.x += this.speedX },
         moveY: function () { this.y += this.speedY },
     }
@@ -157,7 +160,7 @@ animation["f"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(254,0, 127, 0.5)`, 'black',5, 0, 120);
+        shape = new Shape(`rgba(254,254, 254, 0.5)`, 'black',5, 0, 120);
 
         shapes.push(shape);
         
@@ -182,6 +185,7 @@ animation["f"] = function () {
         
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
+        
         
         o = shape;
 

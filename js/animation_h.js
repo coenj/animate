@@ -1,8 +1,28 @@
 // author: CoenJanssen.net
 
-animation["d"] = function () {
+animation["h"] = function () {
 
     //this part of the function uses closure, to make this functions and variables private and run once
+    var w=0;
+    var dropPoints=1;
+
+    document.addEventListener('wheel', function (event) {
+        wheelMove = event.deltaY;
+
+        //dropPoints+= Math.round(Math.random()*2);
+      
+        if (wheelMove > 0) {
+            dropPoints+= 1
+            console.log(dropPoints);
+        } else {
+            dropPoints -= 1
+            console.log(dropPoints);
+        }
+        dropPoints = Math.abs(dropPoints)
+        if(dropPoints>8) dropPoints=1;
+    
+    });
+
     var shapes = [];
     var path =[
         719.19165,3.3851393,696.2204999999999,-7.3143855,691.7597699999999,6.1171875,
@@ -92,7 +112,7 @@ animation["d"] = function () {
         724.65865,94.39076599999973,768.2287299999999,63.78525499999972,757.80273,30.156249999999716,
         763.00923,9.705127699999714,759.43904,-1.199906800000285,744.10352,-1.4531250000002842
            ];
-        
+       
         
     function linePoint() {
 
@@ -109,9 +129,13 @@ animation["d"] = function () {
         speedX: 4,
         speedY: 4,
         update: function () {
-            if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) this.speedX = -this.speedX
-            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0) this.speedY = -this.speedY
-        },
+            if (this.x + this.speedX > canvas.width || this.x + this.speedX < 0) {
+                this.speedX = -this.speedX;
+                                            }
+            if (this.y + this.speedY > canvas.height || this.y + this.speedY < 0){ this.speedY = -this.speedY
+                
+    }
+},
         moveX: function () { this.x += this.speedX },
         moveY: function () { this.y += this.speedY },
     }
@@ -154,7 +178,7 @@ animation["d"] = function () {
 
     function setup() {
 
-        shape = new Shape(`rgba(254,0, 127, 0.5)`, 'black',5, 0, 120);
+        shape = new Shape(`rgba(254,254, 254, 0.5)`, 'black',5, 0, 120);
 
         shapes.push(shape);
         
@@ -179,11 +203,12 @@ animation["d"] = function () {
         
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
+        
+        
         o = shape;
 
         for(var i=0; i< o.linePoints.length-2; i+=3*dropPoints){
-
-            drawBeziers(o.linePoints[i], o.linePoints[i+1], o.linePoints[i+2]);
+            drawLines(o.linePoints[i]);
         }
         
         ctx.closePath();
@@ -225,5 +250,6 @@ animation["d"] = function () {
     }
 }();
 
-animation["d"].play=true;
+animation["h"].play=true;
+
 
