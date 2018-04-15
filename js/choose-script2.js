@@ -14,11 +14,20 @@ window.onload = function () {
     ratio = canvas.width / canvas.height;
     var keysUsed = "";
     var raf;
-    dropPoints = 1;
+    dropPoints=1;
     window.onkeydown = function () {
         // insert a keychar to choose the letter of animation
         keyChar = String.fromCharCode(window.event.keyCode).toLowerCase();
-
+        if (keyChar == "n") {
+            dropPoints += 1;
+            checkPoints();
+            return;
+        } else if (keyChar == "m") {
+            dropPoints -= 1;
+            checkPoints();
+            return;
+        }
+       
 
 
         if (!keysUsed.includes(keyChar)) {
@@ -41,13 +50,18 @@ window.onload = function () {
                 animation[key]();
             }
         }
-      
+
         raf = window.requestAnimationFrame(animate);
     }
 
     animate();
 
-    
+function checkPoints(){
+   // console.log(dropPoints);
+    if (dropPoints > 18) {dropPoints = 18} 
+    else if (dropPoints < 1) {dropPoints = 1 }
+
+}
 
 
 }
