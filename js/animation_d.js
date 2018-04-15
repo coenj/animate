@@ -172,6 +172,13 @@ animation["d"] = function () {
         point.update();
         point.moveX();
         point.moveY();
+        cp1.update();
+        cp1.moveX();
+        cp1.moveY();
+        cp2.update();
+        cp2.moveX();
+        cp2.moveY();
+
         if (show) {
             ctx.bezierCurveTo(cp1.x, cp1.y, cp2.x, cp2.y, point.x, point.y);
         }
@@ -186,13 +193,12 @@ animation["d"] = function () {
         if (dropPoints > 48) dropPoints = 1;
         ctx.beginPath();
         ctx.moveTo(shape.linePoints[0].x, shape.linePoints[0].y);
-
         for (var i = 0; i < o.linePoints.length - 2; i += 3) {
             step = Math.round(dropPoints) * 3;
             modulo = i%step;
-            if (modulo) { show = false } else show = true;
+            
 
-            drawBeziers(o.linePoints[i], o.linePoints[i + 1], o.linePoints[i + 2], show);
+            drawBeziers(o.linePoints[i], o.linePoints[i + 1], o.linePoints[i + 2], !modulo);
         }
 
         ctx.closePath();
