@@ -14,7 +14,7 @@ window.onload = function () {
     ratio = canvas.width / canvas.height;
     var keysUsed = "";
     var raf;
-    dropPoints = 1;
+
     window.onkeydown = function () {
         // insert a keychar to choose the letter of animation
         keyChar = String.fromCharCode(window.event.keyCode).toLowerCase();

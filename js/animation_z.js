@@ -3,7 +3,7 @@
 animation["z"] = function () {
  
     function clear() {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = `rgba(254,254, 254, 0.6)`;
         ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
     

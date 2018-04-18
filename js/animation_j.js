@@ -187,7 +187,7 @@ animation["j"] = function () {
         
         o = shape;
 
-        for(var i=0; i< o.linePoints.length-2; i+=3*dropPoints){
+        for(var i=0; i< o.linePoints.length-(3*dropPoints); i+=3*dropPoints){
             drawLines(o.linePoints[i]);
         }
         
